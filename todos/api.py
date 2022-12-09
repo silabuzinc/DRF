@@ -1,9 +1,13 @@
 from .models import Todo
 from rest_framework import viewsets, permissions
-from .serializers import TodoSerializer
+from .serializers import TodoSerializer, TestTodoSerializer
+from rest_framework.response import Response
+from rest_framework import status
+
 
 class TodoViewSet(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class = TodoSerializer
+    serializer_class = TestTodoSerializer
+
     
