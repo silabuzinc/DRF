@@ -1,15 +1,14 @@
 from rest_framework import routers
 from .api import TodoViewSet, DeleteAllTodo, GetAllTodo, Get2Todo,AllTodo, OneTodo, TodoViewSetCustom
-from django.urls import path
+from django.urls import path, re_path, include
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+from versionedTodo.v3.router import api_urlpatterns as api_v3
+from versionedTodo.v4.router import api_urlpatterns as api_v4
 
 router = routers.DefaultRouter()
-
-router.register('api/v3/todo', TodoViewSetCustom, 'todosCustom')
-router.register('api/v4/todo', TodoViewSet, 'todos')
 
 urlpatterns = [
     path('api/v1/todo/delAll', DeleteAllTodo.as_view(),name='delAll'),  
@@ -21,6 +20,8 @@ urlpatterns = [
     path('api/v1/todo/get2', Get2Todo.as_view(),name='get2Todo'),
     path('api/v2/todo/', AllTodo.as_view(), name = 'fullView'),
     path('api/v2/todo/<int:pk>', OneTodo.as_view(), name = 'OneTodo'),
+    re_path(r'^api/v3/', include(api_v3)),
+    re_path(r'^api/v4/', include(api_v4)),
 ]
 
 urlpatterns += router.urls
