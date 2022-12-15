@@ -16,4 +16,18 @@ class CustomRouter(SimpleRouter):
             detail=True,
             initkwargs={'suffix': 'Detail'}
         ),
+        Route(
+            url=r'^{prefix}$',
+            mapping={'post': 'post'},
+            name='{basename}-create',
+            detail=True,
+            initkwargs={'suffix': 'Create'}
+        ),
+        Route(
+            url=r'^{prefix}/{lookup}$',
+            mapping={'put': 'put'},
+            name='{basename}-update',
+            detail=True,
+            initkwargs={'suffix': 'Update'}
+        ),
     ]
