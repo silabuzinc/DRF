@@ -31,6 +31,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class User(AbstractUser):
+    id = models.AutoField(primary_key=True)
     email = models.CharField(max_length=80, unique=True, default="no@email.com")
     username = models.CharField(max_length=45)
     date_of_birth = models.DateField(null=True)
@@ -40,4 +41,4 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ["username"]
 
     def __str__(self):
-        return self.email
+        return str(self.id)

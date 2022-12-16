@@ -9,6 +9,7 @@ from .serializers import SignUpSerializer, GetUserSerializer
 from .tokens import create_jwt_pair_for_user
 from rest_framework import viewsets
 from .models import User
+from django.shortcuts import redirect
 # Create your views here.
 
 
@@ -24,7 +25,7 @@ class SignUpView(generics.GenericAPIView):
             serializer.save()
 
             response = {"message": "El usuario se creó correctamente", "data": serializer.data}
-
+        
             return Response(data=response, status=status.HTTP_201_CREATED)
 
         return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -39,8 +40,9 @@ class LoginView(APIView):
         user = authenticate(email=email, password=password)
         if user is not None:
             tokens = create_jwt_pair_for_user(user)
+            idUser = User.objects.get(email=email)
+            response = {"message": "Logeado correctamente", "id": idUser.id ,"tokens": tokens}
 
-            response = {"message": "Logeado correctamente", "email": email ,"tokens": tokens}
             return Response(data=response, status=status.HTTP_200_OK)
 
         else:
