@@ -13,3 +13,4 @@ class TodoViewSet(viewsets.ModelViewSet):
 
     search_fields = ['title', 'body']
     ordering = ('-id')
+    throttle_scope = 'get'
