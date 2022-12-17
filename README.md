@@ -1,3 +1,3 @@
 # DRF
 
-Repositorio con todo lo referido a los taller de DRF.
+Taller para admitir CORS dentro de nuestro backend.
