@@ -1,3 +1,3 @@
 # DRF
 
-Repositorio con todo lo referido a los taller de DRF.
+Taller de login para autenticación de usuarios con simpleJWT.
