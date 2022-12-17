@@ -2,3 +2,5 @@ Django
 djangorestframework
 django-cors-headers
 djangorestframework-simplejwt
+drf-yasg
+drf-spectacular
