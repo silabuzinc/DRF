@@ -1,3 +1,9 @@
 # DRF
 
-Repositorio con todo lo referido a los taller de DRF.
+Taller de
+
+* URL's
+
+* Mixins
+
+* Versionamiento
